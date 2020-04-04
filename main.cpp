@@ -129,6 +129,7 @@ Car Wash
     2) charge customer
     3) detail the car interior
  */
+
 struct CarWash //2)        
 {
     //2) has vacuum cleaners
@@ -171,61 +172,67 @@ struct CarWash //2)
     Car carBeingServiced;  
 };
 
+/*
+Checkpoint 1:
+    Fill in #1 - 4 with a random UDT in plain english
+    These 4 UDTs do not need to be related.
+    For each plain-english UDT, write out 3 things it can do, and 5 traits or properties.
+*/
 
 /*
-1)
+1) Aquarium 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) size
+    2) water filters
+    3) plant types
+    4) glass thickness
+    5) light
 3 things it can do:
-    1)
-    2)
-    3)
+    1) accomodate fishes
+    2) inspire humans
+    3) suck energy
  */
 
 /*
-2)
+2) Oven
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) clean/dirty
+    2) used/unused
+    3) temperature
+    4) heating style
+    5) oven door open/closed
 3 things it can do:
-    1)
-    2)
-    3)
+    1) heat up
+    2) startTimer
+    3) make Ping if food is ready for take off
  */
 
 /*
-3)
+3) Cat
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) hairlength
+    2) teethstyle
+    3) healthy or not
+    4) age
+    5) mood
 3 things it can do:
-    1)
-    2)
-    3)
+    1) jump
+    2) chill
+    3) purrrrr
  */
 
 /*
-4)
+4) Cup
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) color
+    2) material
+    3) size
+    4) dirty/clean
+    5) weigth
 3 things it can do:
-    1)
-    2)
-    3)
+    1) stand
+    2) break
+    3) fallFromTable
  */
 
 /*
