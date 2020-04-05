@@ -305,18 +305,39 @@ Checkpoint 1:
     3)
  */
 
+
+
 /*
-10)
+Checkpoint 2:
+    For the 10th UDT, come up with an object that is made of 5 smaller parts.
+    Here is an example:
+    Cell Phone
+
+    A Cell Phone is made up of the following 5 properties:
+        Display
+        Memory
+        CPU
+        Radio
+        Applications
+
+    A Cell Phone has 3 things it can do:
+        make a call
+        send a text
+        run an application.
+*/
+
+/*
+10) InsaneMusicMachine
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) AudioInterface
+    2) DrumPads
+    3) ParamDials
+    4) MicrotonalPitcher
+    5) TimeWarpFlexThing
 3 things it can do:
-    1)
-    2)
-    3)
+    1) play
+    2) stop
+    3) suprise
  */
 
 #include <iostream>
