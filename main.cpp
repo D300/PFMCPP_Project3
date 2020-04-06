@@ -239,8 +239,8 @@ Checkpoint 1:
 5) AudioInterface
 5 properties:
     1) on/off
-    2) InputOutputSelector
-    3) SampleRate
+    2) InputAmount
+    3) OutputAmount
     4) BufSize
     5) ActiveConnections
 3 things it can do:
@@ -254,8 +254,8 @@ Checkpoint 1:
 5 properties:
     1) padSize
     2) triggerResponse
-    3) ledColors
-    4) activeTrack
+    3) ledBrightness
+    4) activated/deactivated
     5) playMode
 3 things it can do:
     1) trigger sample with sensitive velocity
@@ -266,9 +266,9 @@ Checkpoint 1:
 /*
 7) ParamDials
 5 properties:
-    1) defaultSettings
-    2) scaler
-    3) mapper
+    1) rangeScalerMin
+    2) rangeScalerMax
+    3) valueMapperTarget
     4) activated/deactivated
     5) recordMode on/off
 3 things it can do:
@@ -281,10 +281,10 @@ Checkpoint 1:
 8) MircotonalPitcher
 5 properties:
     1) on/off
-    2) PitchDetector
-    3) MicrotonalScaleSelector
-    4) Pitcher
-    5) formantFilter
+    2) notesPerOctave
+    3) dynamicPitchDeviationRange
+    4) maximumShiftingInterval
+    5) defaultFormantFilterDryWet
 3 things it can do:
     1) pitchAnalysis
     2) pitcShifting
@@ -294,9 +294,9 @@ Checkpoint 1:
 /*
 9) TimeWarpFlexThing
 5 properties:
-    1) TransientDetector
-    2) WarpPointEditor
-    3) GranularEngine
+    1) TransientDetectionThreshold
+    2) maxWarpPoints
+    3) granularEngineVoiceAmnt
     4) InterpolationModeSelector
     5) SampleScopeSelector
 3 things it can do:
