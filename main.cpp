@@ -294,8 +294,8 @@ struct AudioInterface // 5)
         Audio getSample();
     };
     
-    // 1) recieve audio
-    Audio recieveAudio(int bufSize = 512, double sampleRate = 44.1);
+    // 1) receive audio
+    Audio receiveAudio(int bufSize = 512, double sampleRate = 44.1);
     // 2) send audio
     void sendAudio(Audio audio);
     // 3) route audio
@@ -377,7 +377,7 @@ struct MicrotonalPitcher // 8)
 struct TimeWarpFlexThing // 9)
 {
     // 1) TransientDetectionThreshold
-    float trasDetectTresh = 0.2f;
+    float transDetectTresh = 0.2f;
     // 2) maxWarpPoints
     int maxWarpPoints = 100;
     // 3) granularEngineVoiceAmnt
@@ -401,9 +401,10 @@ struct TimeWarpFlexThing // 9)
     // 2) cluster
     void cluster(Pattern pattern);
     // 3) sliceSample
-    void sliceSample(AudioInterface audioInterface)
+    auto sliceSample(AudioInterface audioInterface)
     {
-        AudioInterface::Audio sample = audioInterface.getAudio();
+        auto sample = audioInterface.getAudio();
+        return sample;
     }
 };
 
