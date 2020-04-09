@@ -89,11 +89,13 @@ Checkpoint 3:
  
  3) declare your member variables and member functions underneath each plain-english comment in your struct's body.
     - give the member variables relevant data types
- 
+ done
+
  4) make the function parameter list for those member functions use some of your User-Defined Types
     - You'll write definitions in part2 for these functions
     - you'll call each of these functions in part3
- 
+ done
+
  5) make 2 of the 10 user-defined types have a nested class.  
     - this nested class also needs at least 2 member functions.
     - these nested classes are not considered one of your 10 UDTs.
@@ -129,6 +131,8 @@ Car Wash
     2) charge customer
     3) detail the car interior
  */
+
+#include <stdio.h>
 
 struct CarWash //2)        
 {
@@ -179,19 +183,43 @@ Checkpoint 1:
     For each plain-english UDT, write out 3 things it can do, and 5 traits or properties.
 */
 
-/*
-1) Aquarium 
-5 properties:
-    1) size
-    2) water filters
-    3) plant types
-    4) glass thickness
-    5) light
-3 things it can do:
-    1) accomodate fishes
-    2) inspire humans
-    3) suck energy
- */
+
+// 1) Aquarium 
+struct Aquarium
+{
+// 5 properties:
+    // 1) size
+    int size = 40;
+    // 2) water filters
+    int waterFilters = 1;
+    //3) plant types
+    int plantTypes = 3;
+    // 4) glass thickness
+    float glassThickness = 0.8f;
+    // 5) light
+    bool light = true;
+
+// 3 things it can do:
+    // 1) accomodate fishes
+    void accomodateFishes();
+    // 2) inspire humans
+    void inspireHumans();
+    // 3) suck energy
+    void suckEnergy();
+};
+
+struct Oven
+{
+    bool clean = false;
+    bool used = false;
+    float temperatur = 180.0f;
+    int heatingStyle = 3;
+    bool ovenDoorOpen = false;
+
+    void heatUp();
+    void startTimer();
+    void foodReady();
+};
 
 /*
 2) Oven
@@ -207,6 +235,19 @@ Checkpoint 1:
     3) make Ping if food is ready for take off
  */
 
+struct Cat
+{
+    float hairLen = 0.3f;
+    int teethStyle;
+    bool healthy = true;
+    int age = 4;
+    float mood = 0.5f;
+
+    void jump();
+    void chill();
+    void purrrr();
+};
+
 /*
 3) Cat
 5 properties:
@@ -220,6 +261,19 @@ Checkpoint 1:
     2) chill
     3) purrrrr
  */
+
+struct Cup
+{
+    int color = 1;
+    int material = 0;
+    float size = 1.5f;
+    bool dirty = false;
+    float weigth = 5.0f;
+
+    void stand();
+    void breakCup();
+    void fallFromTable();
+};
 
 /*
 4) Cup
@@ -235,6 +289,35 @@ Checkpoint 1:
     3) fallFromTable
  */
 
+struct AudioInterface
+{
+    bool on = false;
+    int audioInputAmnt = 2;
+    int audioOutputAmnt = 2;
+    int bufSize = 512;
+    int activeConnections = 2;
+
+    // buffer<float>& someAudioStream is now just symbolic... 
+    struct Audio
+    {
+        int bufSize = 256;
+        double sampleRate = 44.1;
+
+        void streamAudio(int bufSize = 512);
+        Audio getSample();
+    };
+
+    Audio recieveAudio(int bufSize = 512, double sampleRate = 44.1);
+    void sendAudio(Audio audio);
+    void routeAudio(Audio audio);
+
+    Audio getAudio()
+    {
+        Audio audio;
+        return audio;
+    }
+};
+
 /*
 5) AudioInterface
 5 properties:
@@ -248,6 +331,19 @@ Checkpoint 1:
     2) send audio
     3) route audio
  */
+
+struct DrumPads
+{
+    float padSize = 5.0f;
+    float triggerResponse = 0.7f;
+    float ledBrightness = 0.5f;
+    bool activated = true;
+    int playMode = 1;
+
+    void triggerSampler();
+    void muteTrack();
+    void selectSample();
+};
 
 /*
 6) DrumPads
@@ -263,7 +359,22 @@ Checkpoint 1:
     3) select samplebank
  */
 
+struct ParamDials
+{
+    float rangeScalerMin = 0.1f;
+    float rangeScalerMax = 0.9f;
+    int valueMapperTarget = 3;
+    bool activated = false;
+    bool recordMode = false;
+
+    void ctrlOneParam();
+    void ctrlTwoParams();
+    void ctrlTwoParamsDiffScalings();
+};
+
 /*
+nest a class here
+
 7) ParamDials
 5 properties:
     1) rangeScalerMin
@@ -277,8 +388,20 @@ Checkpoint 1:
     3) control two params at once with different scalings
  */
 
+struct MicrotonalPitcher
+{
+    bool on = true;
+    int notesPerOctave = 100;
+    float dynamicPitchDeviationRange = 200.0f;
+    float maximumShiftingInterval = 100;
+    float defaultFormantFilterDryWet = 0.0f;
+
+    void pitchAnalysis();
+    void pitchShifting();
+    void formantFiltering();
+};
 /*
-8) MircotonalPitcher
+8) MicrotonalPitcher
 5 properties:
     1) on/off
     2) notesPerOctave
@@ -291,8 +414,33 @@ Checkpoint 1:
     3) formantFiltering
  */
 
+struct TimeWarpFlexThing
+{
+    float trasDetectTresh = 0.2f;
+    int maxWarpPoints = 100;
+    int grainEngineVoiceAmnt = 8;
+    int interpolModeSel = 0;
+    float sampleScopeSelector = 0.0f;
+
+    struct Pattern
+    {
+        int patternLen = 5;
+        float velocity = 100.0f;
+
+        void permutatePatternOverLen(int patterLen = 17);
+    };
+
+    void warpToEvenSpreadedSpectralEnergy(Pattern p);
+    void cluster(Pattern pattern);
+    void sliceSample(AudioInterface audioInterface)
+    {
+        AudioInterface::Audio sample = audioInterface.getAudio();
+    }
+};
 /*
 9) TimeWarpFlexThing
+nest a class here
+
 5 properties:
     1) TransientDetectionThreshold
     2) maxWarpPoints
@@ -305,26 +453,23 @@ Checkpoint 1:
     3) sliceSample
  */
 
-/* mmmmmmbbbbbbbcccccccccccccccvvvvvvvvvvvvvvvvvvbbbbbbbbbnnnnmmjjjjjgggffddsaqw21345tzuiok */
-
 /*
-Checkpoint 2:
-    For the 10th UDT, come up with an object that is made of 5 smaller parts.
-    Here is an example:
-    Cell Phone
-
-    A Cell Phone is made up of the following 5 properties:
-        Display
-        Memory
-        CPU
-        Radio
-        Applications
-
-    A Cell Phone has 3 things it can do:
-        make a call
-        send a text
-        run an application.
+your 10th UDTs should only use 5 of your other UDTs for its member variable types.   
+    - No primitives allowed!
 */
+
+struct  InsaneMusicMachine
+{
+    AudioInterface ioDevice;
+    DrumPads drumPads;
+    ParamDials paramDials;
+    MicrotonalPitcher microtonalPitcher;
+    TimeWarpFlexThing timeWarper;
+
+    void play();
+    void stop();
+    void suprise();
+};
 
 /*
 10) InsaneMusicMachine
