@@ -304,7 +304,7 @@ struct AudioInterface // 5)
     Audio getAudio()
     {
         Audio audio;
-        return audio;
+        return {};
     }
 };
 
