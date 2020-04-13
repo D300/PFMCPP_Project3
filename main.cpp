@@ -94,7 +94,8 @@ send me a DM to check your pull request
  For each plain-english UDT, write out 3 things it can do, and 5 traits or properties.
  */
 
-
+#include <iostream>
+using namespace std;
 
 struct Aquarium
 {
@@ -109,11 +110,20 @@ struct Aquarium
     void suckEnergy();
 };
 
-void Aquarium::accomodateFishes() {}
+void Aquarium::accomodateFishes() 
+{
+    cout << "accommodateFishes" << endl;
+}
 
-void Aquarium::inspireHumans() {}
+void Aquarium::inspireHumans() 
+{
+    cout << "inspireHumans" << endl;
+}
 
-void Aquarium::suckEnergy(){}
+void Aquarium::suckEnergy()
+{
+    cout << "suckEnergy" << endl;
+}
 
 //=========================================================
 
@@ -131,11 +141,20 @@ struct Oven
 };
 
 
-void Oven::heatUp() {}
+void Oven::heatUp() 
+{
+    cout << "heatUp" << endl;
+}
 
-void Oven::startTimer() {}
+void Oven::startTimer() 
+{
+    cout << "startTimer" << endl;
+}
 
-void Oven::foodReady() {}
+void Oven::foodReady() 
+{
+    cout << "foodReady" << endl;
+}
 
 //=========================================================
 
@@ -152,9 +171,18 @@ struct Cat
     void purrrr();
 };
 
-void Cat::jump() {}
-void Cat::chill() {}
-void Cat::purrrr() {}
+void Cat::jump() 
+{
+    cout << "jump" << endl;
+}
+void Cat::chill() 
+{
+    cout << "chill" << endl;
+}
+void Cat::purrrr() 
+{
+    cout << "purrrr" << endl;
+}
 
 //=========================================================
 
@@ -171,9 +199,18 @@ struct Cup
     void fallFromTable();
 };
 
-void Cup::stand() {}
-void Cup::breakCup() {}
-void Cup::fallFromTable() {}
+void Cup::stand() 
+{
+    cout << "stand" << endl;
+}
+void Cup::breakCup() 
+{
+    cout << "breakCup" << endl;
+}
+void Cup::fallFromTable() 
+{
+    cout << "fallFromTable" << endl;
+}
 
 //=========================================================
 
@@ -232,9 +269,18 @@ struct DrumPads
     void selectSample();
 };
 
-void DrumPads::triggerSampler() {}
-void DrumPads::muteTrack() {}
-void DrumPads::selectSample() {}
+void DrumPads::triggerSampler() 
+{
+    cout << "triggerSamples" << endl;
+}
+void DrumPads::muteTrack() 
+{
+    cout << "muteTrack" << endl;
+}
+void DrumPads::selectSample() 
+{
+    cout << "selectSample" << endl;
+}
 
 //=========================================================
 struct ParamDials
@@ -250,9 +296,18 @@ struct ParamDials
     void ctrlTwoParamsDiffScalings();
 };
 
-void ParamDials::ctrlOneParam() {}
-void ParamDials::ctrlTwoParams() {}
-void ctrlTwoParamsDiffScalings() {}
+void ParamDials::ctrlOneParam() 
+{
+    cout << "ctrlOneParam" << endl;
+}
+void ParamDials::ctrlTwoParams() 
+{
+    cout << "ctrlTwoParams" << endl;
+}
+void ctrlTwoParamsDiffScalings() 
+{
+    cout << "ctrlTwoParamsDiffScalings" << endl;
+}
 
 //=========================================================
 struct MicrotonalPitcher
@@ -268,9 +323,18 @@ struct MicrotonalPitcher
     void formantFiltering();
 };
 
-void MicrotonalPitcher::pitchAnalysis() {}
-void MicrotonalPitcher::pitchShifting() {}
-void MicrotonalPitcher::formantFiltering() {}
+void MicrotonalPitcher::pitchAnalysis() 
+{
+    cout << "pitchAnalysis" << endl;
+}
+void MicrotonalPitcher::pitchShifting() 
+{
+    cout << "pitchShifting" << endl;
+}
+void MicrotonalPitcher::formantFiltering() 
+{
+    cout << "formantFiltering" << endl;
+}
 
 //=========================================================
 struct TimeWarpFlexThing
