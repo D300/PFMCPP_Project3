@@ -57,8 +57,7 @@ struct Aquarium
     float glassThickness;
     int waterFilters { 3 };
 
-    Aquarium()
-    :
+    Aquarium() :
     size(39),
     glassThickness(5)
     {
@@ -82,7 +81,7 @@ void Aquarium::inspireHumans()
 {
     auto sizeOverWaterFilter = size / waterFilters;
     
-    std::cout << "sizeOVerWAterFilters: " << sizeOverWaterFilter << "\n" << std::endl;
+    std::cout << "sizeOverWaterFilters: " << sizeOverWaterFilter << "\n" << std::endl;
 }
 
 int Aquarium::suckEnergy()
@@ -97,8 +96,7 @@ struct Oven
     bool clean;
     float temperatur;
     
-    Oven()
-    :
+    Oven() :
     clean(true),
     temperatur(234.f)
     {
