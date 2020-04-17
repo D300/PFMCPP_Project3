@@ -109,13 +109,13 @@ struct Oven
     bool used = false;
     bool ovenDoorOpen = false;
     
+    void checkCondition();
     void heatUp();
     void startTimer();
     void foodReady();
 };
 
-
-void Oven::heatUp() 
+void Oven::checkCondition()
 {
     if (clean == true)
     {
@@ -125,6 +125,11 @@ void Oven::heatUp()
     {
         std::cout << "clean your oven" << std::endl;
     }
+}
+
+void Oven::heatUp() 
+{
+    checkCondition();
 }
 
 void Oven::startTimer() 
