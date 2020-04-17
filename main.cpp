@@ -59,7 +59,7 @@ int main()
 
 //insert Example::main() into main() of user's repo.
 
-#include <iostream>
+
 using namespace std;
 
 struct Aquarium
@@ -430,6 +430,12 @@ int main()
 
     
     iMM.play();
+
+
+    cout << "\naquarium plant types: " << aquarium.plantTypes << endl;
+    cout << "oven temperature: " << oven.temperatur << endl;
+    cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << endl;
+
 
     Example::main();
     std::cout << "good to go!" << std::endl;
