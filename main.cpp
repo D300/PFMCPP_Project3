@@ -109,28 +109,49 @@ struct Oven
     bool used = false;
     bool ovenDoorOpen = false;
     
-    void checkCondition();
+    bool checkCondition();
     void heatUp();
+    void setTemperature(bool condition);
+
+
     void startTimer();
     void foodReady();
 };
 
-void Oven::checkCondition()
+bool Oven::checkCondition()
 {
+    bool condition = false;
+
     if (clean == true)
     {
         std::cout << "heated Up - lets make some cookies" << std::endl;
+        condition = true;
     }
     else
     {
         std::cout << "clean your oven" << std::endl;
     }
+
+    return condition;
 }
 
 void Oven::heatUp() 
 {
-    checkCondition();
+    setTemperature(checkCondition());
 }
+
+void Oven::setTemperature(bool condition)
+{
+    if (condition == true)
+    {
+        temperatur = 200.f;
+    }
+    else
+    {
+        temperatur = 0.f;
+    }
+}
+
 
 void Oven::startTimer() 
 {
