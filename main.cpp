@@ -25,7 +25,9 @@ namespace Example {
 struct UDT  
 {
     int a; //a member variable
-    float b { 2.f }; //3) in-class initialization
+
+    // why the curly braces and no assignment operator?
+    float b { 2.f }; //3) in-class initialization 
     UDT() : a(0) { } //3) 'constructor-initializer-list' member variable initialization
     void printThing()  //the member function
     {
@@ -39,24 +41,30 @@ int main()
     foo.printThing(); //calling a member function of the instance that was instantiated.
     return 0;
 }
-}
+} // end namespace 
 
 //call Example::main()
 
-
+/*
 using namespace std; FIXME never use the 'using namespace' hack. it's the quickest way to create really difficult bugs that are really hard to solve.
+*/
 
 struct Aquarium
 {
     // do you put the member variables which you instatiate in the constructor above the ctor for readability?
     
-    int size;
-    
-    Aquarium() { size = 40; }
+    float size;
+    float glassThickness;
+    int waterFilters { 3 };
 
-    int waterFilters = 1;
+    Aquarium() :
+    size(39),
+    glassThickness(5)
+    {
+        std::cout << "aquarium ctor" << std::endl;
+    }
+
     int plantTypes = 3;
-    float glassThickness = 0.8f;
     bool light = true;
     
     void accomodateFishes();
@@ -66,12 +74,14 @@ struct Aquarium
 
 void Aquarium::accomodateFishes() 
 {
-    cout << "accommodateFishes" << endl;
+    std::cout << "accommodateFishes" << std::endl;
 }
 
 void Aquarium::inspireHumans() 
 {
-    cout << "\nLearn the Rules Like a Pro, So You Can Break Them Like an Artist.\n" << endl;
+    auto sizeOverWaterFilter = size / waterFilters;
+    
+    std::cout << "sizeOverWaterFilters: " << sizeOverWaterFilter << "\n" << std::endl;
 }
 
 int Aquarium::suckEnergy()
@@ -84,33 +94,71 @@ int Aquarium::suckEnergy()
 struct Oven
 {
     bool clean;
+    float temperatur;
     
-    Oven() { clean = true; }
-
-    bool used = false;
-    float temperatur = 180.0f;
+    Oven() :
+    clean(true),
+    temperatur(234.f)
+    {
+        std::cout << "oven ctor" << std::endl;
+    } 
+    
     int heatingStyle = 3;
+    bool used = false;
     bool ovenDoorOpen = false;
     
+    bool checkCondition();
     void heatUp();
+    void setTemperature(bool condition);
+
+
     void startTimer();
     void foodReady();
 };
 
+bool Oven::checkCondition()
+{
+    bool condition = false;
+
+    if (clean == true)
+    {
+        std::cout << "heated Up - lets make some cookies" << std::endl;
+        condition = true;
+    }
+    else
+    {
+        std::cout << "clean your oven" << std::endl;
+    }
+
+    return condition;
+}
 
 void Oven::heatUp() 
 {
-    cout << "heatUp" << endl;
+    setTemperature(checkCondition());
 }
+
+void Oven::setTemperature(bool condition)
+{
+    if (condition == true)
+    {
+        temperatur = 200.f;
+    }
+    else
+    {
+        temperatur = 0.f;
+    }
+}
+
 
 void Oven::startTimer() 
 {
-    cout << "startTimer" << endl;
+    std::cout << "startTimer" << std::endl;
 }
 
 void Oven::foodReady() 
 {
-    cout << "foodReady - Everything you can imagine is real.\n" << endl;
+    std::cout << "foodReady - Everything you can imagine is real.\n" << std::endl;
 }
 
 //=========================================================
@@ -133,15 +181,15 @@ struct Cat
 
 void Cat::jump() 
 {
-    cout << "jump - Art washes away from the soul the dust of everyday life.\n" << endl;
+    std::cout << "jump - Art washes away from the soul the dust of everyday life.\n" << std::endl;
 }
 void Cat::chill() 
 {
-    cout << "chill" << endl;
+    std::cout << "chill" << std::endl;
 }
 void Cat::purrrr() 
 {
-    cout << "purrrr" << endl;
+    std::cout << "purrrr" << std::endl;
 }
 
 //=========================================================
@@ -164,15 +212,15 @@ struct Cup
 
 void Cup::stand() 
 {
-    cout << "stand" << endl;
+    std::cout << "stand" << std::endl;
 }
 void Cup::breakCup() 
 {
-    cout << "breakCup" << endl;
+    std::cout << "breakCup" << std::endl;
 }
 void Cup::fallFromTable() 
 {
-    cout << "fallFromTable - Art is a lie that makes us realize truth.\n" << endl;
+    std::cout << "fallFromTable - Art is a lie that makes us realize truth.\n" << std::endl;
 }
 
 //=========================================================
@@ -211,7 +259,7 @@ struct AudioInterface
 void AudioInterface::sendAudio(Audio audio) 
 {
     audio.streamAudio(512);
-    cout << "audio sending - Action is the foundational key to all success.\n" << endl;
+    std::cout << "audio sending - Action is the foundational key to all success.\n" << std::endl;
 }
 void AudioInterface::routeAudio(Audio audio) 
 {
@@ -241,15 +289,15 @@ struct DrumPads
 
 void DrumPads::triggerSampler() 
 {
-    cout << "triggerSamples - Every act of creation is first of all an act of destruction.\n" << endl;
+    std::cout << "triggerSamples - Every act of creation is first of all an act of destruction.\n" << std::endl;
 }
 void DrumPads::muteTrack() 
 {
-    cout << "muteTrack" << endl;
+    std::cout << "muteTrack" << std::endl;
 }
 void DrumPads::selectSample() 
 {
-    cout << "selectSample" << endl;
+    std::cout << "selectSample" << std::endl;
 }
 
 //=========================================================
@@ -271,15 +319,15 @@ struct ParamDials
 
 void ParamDials::ctrlOneParam() 
 {
-    cout << "ctrlOneParam - It takes a long time to become young.\n" << endl;
+    std::cout << "ctrlOneParam - It takes a long time to become young.\n" << std::endl;
 }
 void ParamDials::ctrlTwoParams() 
 {
-    cout << "ctrlTwoParams" << endl;
+    std::cout << "ctrlTwoParams" << std::endl;
 }
 void ctrlTwoParamsDiffScalings() 
 {
-    cout << "ctrlTwoParamsDiffScalings" << endl;
+    std::cout << "ctrlTwoParamsDiffScalings" << std::endl;
 }
 
 //=========================================================
@@ -301,15 +349,15 @@ struct MicrotonalPitcher
 
 void MicrotonalPitcher::pitchAnalysis() 
 {
-    cout << "pitchAnalysis" << endl;
+    std::cout << "pitchAnalysis" << std::endl;
 }
 void MicrotonalPitcher::pitchShifting() 
 {
-    cout << "pitchShifting - Inspiration does exist, but it must find you working.\n" << endl;
+    std::cout << "pitchShifting - Inspiration does exist, but it must find you working.\n" << std::endl;
 }
 void MicrotonalPitcher::formantFiltering() 
 {
-    cout << "formantFiltering" << endl;
+    std::cout << "formantFiltering" << std::endl;
 }
 
 //=========================================================
@@ -345,7 +393,7 @@ void TimeWarpFlexThing::warpToEvenSpreadedSpectralEnergy(Pattern p)
 void TimeWarpFlexThing::cluster(Pattern p)
 {
     p.patternLen = 14;
-    cout << "cluster - Every child is an artist. The Problem is how to retain an artist once we grow up\n" << endl;
+    std::cout << "cluster - Every child is an artist. The Problem is how to retain an artist once we grow up\n" << std::endl;
 }
 
 auto TimeWarpFlexThing::sliceSample(AudioInterface audioInterface)
@@ -373,7 +421,7 @@ struct InsaneMusicMachine
     
     void play()
     {
-        cout << "Good artists copy, great artists steal. - Picasso" << endl;
+        std::cout << "Good artists copy, great artists steal. - Picasso" << std::endl;
     }
 
     void stop();
@@ -398,6 +446,7 @@ int main()
 
 
     aquarium.inspireHumans();
+    oven.heatUp();
     oven.foodReady();
     cat.jump();
     cup.fallFromTable();
@@ -415,13 +464,13 @@ int main()
     
     iMM.play();
 
-    cout << "\naquarium plant types: " << aquarium.plantTypes << endl;
-    cout << "oven temperature: " << oven.temperatur << endl;
-    cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << endl;
+    std::cout << "\naquarium plant types: " << aquarium.plantTypes << std::endl;
+    std::cout << "oven temperature: " << oven.temperatur << std::endl;
+    std::cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << std::endl;
 
 
     // print returning values
-    cout << "\n energy sucked: " << aquarium.suckEnergy() << endl;
+    std::cout << "\n energy sucked: " << aquarium.suckEnergy() << std::endl;
 
 
     Example::main();
