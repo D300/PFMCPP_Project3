@@ -55,16 +55,21 @@ int main()
     
     return 0;
 }
-}
+} // end namespace
 
 //insert Example::main() into main() of user's repo.
 
-#include <iostream>
+
 using namespace std;
 
 struct Aquarium
 {
-    int size = 40;
+    // do you put the member variables which you instatiate in the constructor above the ctor for readability?
+    
+    int size;
+    
+    Aquarium() { size = 40; }
+
     int waterFilters = 1;
     int plantTypes = 3;
     float glassThickness = 0.8f;
@@ -72,7 +77,7 @@ struct Aquarium
     
     void accomodateFishes();
     void inspireHumans();
-    void suckEnergy();
+    int suckEnergy();
 };
 
 void Aquarium::accomodateFishes() 
@@ -82,19 +87,22 @@ void Aquarium::accomodateFishes()
 
 void Aquarium::inspireHumans() 
 {
-    cout << "inspireHumans" << endl;
+    cout << "\nLearn the Rules Like a Pro, So You Can Break Them Like an Artist.\n" << endl;
 }
 
-void Aquarium::suckEnergy()
+int Aquarium::suckEnergy()
 {
-    cout << "suckEnergy" << endl;
+    return 100;
 }
 
 //=========================================================
 
 struct Oven
 {
-    bool clean = false;
+    bool clean;
+    
+    Oven() { clean = true; }
+
     bool used = false;
     float temperatur = 180.0f;
     int heatingStyle = 3;
@@ -118,7 +126,7 @@ void Oven::startTimer()
 
 void Oven::foodReady() 
 {
-    cout << "foodReady" << endl;
+    cout << "foodReady - Everything you can imagine is real.\n" << endl;
 }
 
 //=========================================================
@@ -126,6 +134,9 @@ void Oven::foodReady()
 struct Cat
 {
     float hairLen = 0.3f;
+
+    Cat() { hairLen = 0.5f; }
+
     int teethStyle;
     bool healthy = true;
     int age = 4;
@@ -138,7 +149,7 @@ struct Cat
 
 void Cat::jump() 
 {
-    cout << "jump" << endl;
+    cout << "jump - Art washes away from the soul the dust of everyday life.\n" << endl;
 }
 void Cat::chill() 
 {
@@ -154,6 +165,9 @@ void Cat::purrrr()
 struct Cup 
 {
     int color = 1;
+
+    Cup() { color = 2; }
+
     int material = 0;
     float size = 1.5f;
     bool dirty = false;
@@ -174,7 +188,7 @@ void Cup::breakCup()
 }
 void Cup::fallFromTable() 
 {
-    cout << "fallFromTable" << endl;
+    cout << "fallFromTable - Art is a lie that makes us realize truth.\n" << endl;
 }
 
 //=========================================================
@@ -182,8 +196,11 @@ void Cup::fallFromTable()
 struct AudioInterface
 {
     bool on = false;
+
+    AudioInterface() { on = true; }
+
     int audioInputAmnt = 2;
-    int audioOutputAmnt = 2; 
+    int audioOutputAmnt = 0; 
     int bufSize = 512;
     int activeConnections = 2;
     
@@ -210,6 +227,7 @@ struct AudioInterface
 void AudioInterface::sendAudio(Audio audio) 
 {
     audio.streamAudio(512);
+    cout << "audio sending - Action is the foundational key to all success.\n" << endl;
 }
 void AudioInterface::routeAudio(Audio audio) 
 {
@@ -224,6 +242,9 @@ void AudioInterface::Audio::streamAudio(int bufSize_)
 struct DrumPads
 {
     float padSize = 5.0f;
+
+    DrumPads() { padSize = 10.0f; }
+
     float triggerResponse = 0.7f;
     float ledBrightness = 0.5f;
     bool activated = true;
@@ -236,7 +257,7 @@ struct DrumPads
 
 void DrumPads::triggerSampler() 
 {
-    cout << "triggerSamples" << endl;
+    cout << "triggerSamples - Every act of creation is first of all an act of destruction.\n" << endl;
 }
 void DrumPads::muteTrack() 
 {
@@ -251,6 +272,9 @@ void DrumPads::selectSample()
 struct ParamDials
 {
     float rangeScalerMin = 0.1f;
+
+    ParamDials() { rangeScalerMin = 0.2f; }
+
     float rangeScalerMax = 0.9f;
     int valueMapperTarget = 3;
     bool activated = false;
@@ -263,7 +287,7 @@ struct ParamDials
 
 void ParamDials::ctrlOneParam() 
 {
-    cout << "ctrlOneParam" << endl;
+    cout << "ctrlOneParam - It takes a long time to become young.\n" << endl;
 }
 void ParamDials::ctrlTwoParams() 
 {
@@ -278,6 +302,9 @@ void ctrlTwoParamsDiffScalings()
 struct MicrotonalPitcher
 {
     bool on = true;
+
+    MicrotonalPitcher() { on = false; }
+
     int notesPerOctave = 100;
     float dynamicPitchDeviationRange = 200.0f;
     float maximumShiftingInterval = 100;
@@ -294,7 +321,7 @@ void MicrotonalPitcher::pitchAnalysis()
 }
 void MicrotonalPitcher::pitchShifting() 
 {
-    cout << "pitchShifting" << endl;
+    cout << "pitchShifting - Inspiration does exist, but it must find you working.\n" << endl;
 }
 void MicrotonalPitcher::formantFiltering() 
 {
@@ -305,6 +332,9 @@ void MicrotonalPitcher::formantFiltering()
 struct TimeWarpFlexThing
 {
     float transDetectTresh = 0.2f;
+
+    TimeWarpFlexThing() { transDetectTresh = 0.3f; }
+
     int maxWarpPoints = 100;
     int grainEngineVoiceAmnt = 8;
     int interpolModeSel = 0;
@@ -331,6 +361,7 @@ void TimeWarpFlexThing::warpToEvenSpreadedSpectralEnergy(Pattern p)
 void TimeWarpFlexThing::cluster(Pattern p)
 {
     p.patternLen = 14;
+    cout << "cluster - Every child is an artist. The Problem is how to retain an artist once we grow up\n" << endl;
 }
 
 auto TimeWarpFlexThing::sliceSample(AudioInterface audioInterface)
@@ -348,13 +379,19 @@ void TimeWarpFlexThing::Pattern::permutatePatternOverLen(int patternLen_)
 //=========================================================
 struct InsaneMusicMachine 
 {
+    InsaneMusicMachine() { ioDevice.audioInputAmnt = 2; }
+
     AudioInterface ioDevice;
     DrumPads drumPads;
     ParamDials paramDials;
     MicrotonalPitcher microtonalPitcher;
     TimeWarpFlexThing timeWarper;
     
-    void play();
+    void play()
+    {
+        cout << "Good artists copy, great artists steal. - Picasso" << endl;
+    }
+
     void stop();
     void suprise();
 };
@@ -363,6 +400,46 @@ struct InsaneMusicMachine
 
 int main()
 {
+    Aquarium aquarium;
+    Oven oven;
+    Cat cat;
+    Cup cup;
+    AudioInterface audioInterface;
+    DrumPads drumPads;
+    ParamDials paramDials;
+    MicrotonalPitcher microtonalPitcher;
+    TimeWarpFlexThing timeWarper;
+
+    InsaneMusicMachine iMM;
+
+
+    aquarium.inspireHumans();
+    oven.foodReady();
+    cat.jump();
+    cup.fallFromTable();
+
+    AudioInterface::Audio someAudio;
+    audioInterface.sendAudio(someAudio);
+
+    drumPads.triggerSampler();
+    paramDials.ctrlOneParam();
+    microtonalPitcher.pitchShifting();
+    
+    TimeWarpFlexThing::Pattern pattern;
+    timeWarper.cluster(pattern);
+
+    
+    iMM.play();
+
+    cout << "\naquarium plant types: " << aquarium.plantTypes << endl;
+    cout << "oven temperature: " << oven.temperatur << endl;
+    cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << endl;
+
+
+    // print returning values
+    cout << "\n energy sucked: " << aquarium.suckEnergy() << endl;
+
+
     Example::main();
     std::cout << "good to go!" << std::endl;
 }
