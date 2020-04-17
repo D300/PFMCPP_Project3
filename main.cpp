@@ -95,7 +95,94 @@ struct Aquarium
     void accomodateFishes();
     void inspireHumans();
     int suckEnergy();
+    
+    /* part 5*/
+    void setWaterConditionValue(int value_);
+    
+    int filterLifetime = 100;
+
+    bool waterConditionClean = true;
+    int waterConditionValue = 10;
+
+    void controlWaterCondition();
+    void setWaterConditionMeter();
+    void filterWater();
+    void checkForFilters();
+
+    void lifeGoesBy();
 };
+
+void Aquarium::setWaterConditionValue(int value_)
+{
+    waterConditionValue = value_;
+}
+
+void Aquarium::lifeGoesBy()
+{
+    std::cout << "over time fishes make dirt, lets filter the water" << std::endl;
+    controlWaterCondition();
+
+    setWaterConditionMeter();
+}
+
+void Aquarium::controlWaterCondition()
+{
+    std::cout << "control water condition" << std::endl;
+    
+    while (!waterConditionClean)
+    {
+        filterWater();
+    }
+}
+
+void Aquarium::setWaterConditionMeter()
+{
+    std::cout << "set water condi-meter" << std::endl;
+    
+    if (waterConditionValue < 5 && waterConditionValue > -5)
+    {
+        waterConditionClean = true;   
+    }
+    else
+    {
+        waterConditionClean = false;   
+    }
+}
+
+void Aquarium::filterWater()
+{
+    filterLifetime -= 5;
+
+    waterConditionValue -= 1;
+
+    std::cout << "filterState; " << filterLifetime << std::endl;
+    std::cout << "waterConditionValue: " << waterConditionValue << std::endl;
+
+
+    if (filterLifetime == 0)
+    {
+        std::cout << "change Filter" << std::endl;
+        checkForFilters();
+
+        // filterLifetime = 100;
+    }
+
+    setWaterConditionMeter();
+}
+
+void Aquarium::checkForFilters()
+{
+    for (int i = 0; i < waterFilters; i++)
+    {
+        std::cout << "check for working filters: " << i << std::endl;
+    }
+
+    std::cout << "plug new filter" << std::endl;
+}
+
+
+//==================================================================
+//==================================================================
 
 void Aquarium::accomodateFishes() 
 {
@@ -114,7 +201,8 @@ int Aquarium::suckEnergy()
     return 100;
 }
 
-//=========================================================
+//==================================================================
+//==================================================================
 
 struct Oven
 {
@@ -183,7 +271,7 @@ void Oven::startTimer()
 
 void Oven::foodReady() 
 {
-    std::cout << "foodReady - Everything you can imagine is real.\n" << std::endl;
+    // std::cout << "foodReady - Everything you can imagine is real.\n" << std::endl;
 }
 
 //=========================================================
@@ -206,15 +294,15 @@ struct Cat
 
 void Cat::jump() 
 {
-    std::cout << "jump - Art washes away from the soul the dust of everyday life.\n" << std::endl;
+    // std::cout << "jump - Art washes away from the soul the dust of everyday life.\n" << std::endl;
 }
 void Cat::chill() 
 {
-    std::cout << "chill" << std::endl;
+    // std::cout << "chill" << std::endl;
 }
 void Cat::purrrr() 
 {
-    std::cout << "purrrr" << std::endl;
+    // std::cout << "purrrr" << std::endl;
 }
 
 //=========================================================
@@ -493,11 +581,24 @@ int main()
     std::cout << "oven temperature: " << oven.temperatur << std::endl;
     std::cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << std::endl;
 
-
     // print returning values
-    std::cout << "\n energy sucked: " << aquarium.suckEnergy() << std::endl;
+    std::cout << "\n energy sucked: " << aquarium.suckEnergy() << "\n" << std::endl;
 
 
+    // part 5
+    // set waterconditionvalue
+    // checkwatercondition 
+    // filter water... till its clean.. 
+    
+    aquarium.setWaterConditionValue(50);
+    aquarium.setWaterConditionMeter();
+    aquarium.controlWaterCondition();
+    
+    
+    
+
+
+    std::cout << " " << std::endl;
     Example::main();
     std::cout << "good to go!" << std::endl;
 }
