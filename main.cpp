@@ -77,7 +77,7 @@ struct Aquarium
     
     void accomodateFishes();
     void inspireHumans();
-    void suckEnergy();
+    int suckEnergy();
 };
 
 void Aquarium::accomodateFishes() 
@@ -90,9 +90,9 @@ void Aquarium::inspireHumans()
     cout << "\nLearn the Rules Like a Pro, So You Can Break Them Like an Artist.\n" << endl;
 }
 
-void Aquarium::suckEnergy()
+int Aquarium::suckEnergy()
 {
-    cout << "suckEnergy" << endl;
+    return 100;
 }
 
 //=========================================================
@@ -431,10 +431,13 @@ int main()
     
     iMM.play();
 
-
     cout << "\naquarium plant types: " << aquarium.plantTypes << endl;
     cout << "oven temperature: " << oven.temperatur << endl;
     cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << endl;
+
+
+    // print returning values
+    cout << "\n energy sucked: " << aquarium.suckEnergy() << endl;
 
 
     Example::main();
