@@ -51,7 +51,7 @@ struct Foo
         while( bar.num < threshold )         //4a) 
         { 
             bar.num += 1;                    //4a)
-            
+
             if( bar.num >= threshold )       //4b)
                 return bar;
         }
@@ -68,138 +68,69 @@ int main()
     std::cout << "bar.num: " << bar.num << std::endl;     //6) 
     return 0;
 }
-}
+} // end namespace
 
-//call Example::main() in main()
+// Example::main() in main()
 
 
+namespace Part5 {
+/*
+struct Filter
+{
+    int filterLifetime = 100;
+    Filter(int l) : filterLifetime(l) { }
+};
+*/
+
+struct Water
+{
+    float clarity = -50.f;
+    Water(float c) : clarity(c) { }
+
+    float getCondition()
+    {
+        return clarity;
+    }
+};
 
 struct Aquarium
 {
-    // do you put the member variables which you instatiate in the constructor above the ctor for readability?
-    
     float size;
-    float glassThickness;
-    int waterFilters { 3 };
 
     Aquarium() :
-    size(39),
-    glassThickness(5)
+    size(39)
     {
-        std::cout << "aquarium ctor" << std::endl;
+        std::cout << "aquarium ctor\n" << std::endl;
     }
 
-    int plantTypes = 3;
-    bool light = true;
-    
-    void accomodateFishes();
-    void inspireHumans();
-    int suckEnergy();
-    
-    /* part 5*/
-    void setWaterConditionValue(int value_);
-    
-    int filterLifetime = 100;
+    Water filterWaterUntilItsClean(Water water);
 
-    bool waterConditionClean = true;
-    int waterConditionValue = 10;
-
-    void controlWaterCondition();
-    void setWaterConditionMeter();
-    void filterWater();
-    void checkForFilters();
-
-    void lifeGoesBy();
 };
 
-void Aquarium::setWaterConditionValue(int value_)
+Water Aquarium::filterWaterUntilItsClean(Water water)
 {
-    waterConditionValue = value_;
-}
-
-void Aquarium::lifeGoesBy()
-{
-    std::cout << "over time fishes make dirt, lets filter the water" << std::endl;
-    controlWaterCondition();
-
-    setWaterConditionMeter();
-}
-
-void Aquarium::controlWaterCondition()
-{
-    std::cout << "control water condition" << std::endl;
+    while (water.getCondition() < 0) // a)
+    {
+        water.clarity += 5;
+        std::cout << "...filters water..." << std::endl;
+    }
     
-    while (!waterConditionClean)
-    {
-        filterWater();
-    }
+    return water;
 }
 
-void Aquarium::setWaterConditionMeter()
+int main()
 {
-    std::cout << "set water condi-meter" << std::endl;
+    Aquarium aquarium;
+    Water water(-50);
     
-    if (waterConditionValue < 5 && waterConditionValue > -5)
-    {
-        waterConditionClean = true;   
-    }
-    else
-    {
-        waterConditionClean = false;   
-    }
+    auto filteredWater = aquarium.filterWaterUntilItsClean(water);
+
+    std::cout << "\nwater is clean with a clarity of " << filteredWater.clarity << "\n" << std::endl;
+
+    return 0;
 }
 
-void Aquarium::filterWater()
-{
-    filterLifetime -= 5;
-
-    waterConditionValue -= 1;
-
-    std::cout << "filterState; " << filterLifetime << std::endl;
-    std::cout << "waterConditionValue: " << waterConditionValue << std::endl;
-
-
-    if (filterLifetime == 0)
-    {
-        std::cout << "change Filter" << std::endl;
-        checkForFilters();
-
-        // filterLifetime = 100;
-    }
-
-    setWaterConditionMeter();
-}
-
-void Aquarium::checkForFilters()
-{
-    for (int i = 0; i < waterFilters; i++)
-    {
-        std::cout << "check for working filters: " << i << std::endl;
-    }
-
-    std::cout << "plug new filter" << std::endl;
-}
-
-
-//==================================================================
-//==================================================================
-
-void Aquarium::accomodateFishes() 
-{
-    std::cout << "accommodateFishes" << std::endl;
-}
-
-void Aquarium::inspireHumans() 
-{
-    auto sizeOverWaterFilter = size / waterFilters;
-    
-    std::cout << "sizeOverWaterFilters: " << sizeOverWaterFilter << "\n" << std::endl;
-}
-
-int Aquarium::suckEnergy()
-{
-    return 100;
-}
+} // end namespace
 
 //==================================================================
 //==================================================================
@@ -213,7 +144,7 @@ struct Oven
     clean(true),
     temperatur(234.f)
     {
-        std::cout << "oven ctor" << std::endl;
+        // std::cout << "oven ctor" << std::endl;
     } 
     
     int heatingStyle = 3;
@@ -235,12 +166,12 @@ bool Oven::checkCondition()
 
     if (clean == true)
     {
-        std::cout << "heated Up - lets make some cookies" << std::endl;
+        // std::cout << "heated Up - lets make some cookies" << std::endl;
         condition = true;
     }
     else
     {
-        std::cout << "clean your oven" << std::endl;
+        // std::cout << "clean your oven" << std::endl;
     }
 
     return condition;
@@ -266,7 +197,7 @@ void Oven::setTemperature(bool condition)
 
 void Oven::startTimer() 
 {
-    std::cout << "startTimer" << std::endl;
+    // std::cout << "startTimer" << std::endl;
 }
 
 void Oven::foodReady() 
@@ -325,15 +256,15 @@ struct Cup
 
 void Cup::stand() 
 {
-    std::cout << "stand" << std::endl;
+    // std::cout << "stand" << std::endl;
 }
 void Cup::breakCup() 
 {
-    std::cout << "breakCup" << std::endl;
+    // std::cout << "breakCup" << std::endl;
 }
 void Cup::fallFromTable() 
 {
-    std::cout << "fallFromTable - Art is a lie that makes us realize truth.\n" << std::endl;
+    // std::cout << "fallFromTable - Art is a lie that makes us realize truth.\n" << std::endl;
 }
 
 //=========================================================
@@ -372,7 +303,7 @@ struct AudioInterface
 void AudioInterface::sendAudio(Audio audio) 
 {
     audio.streamAudio(512);
-    std::cout << "audio sending - Action is the foundational key to all success.\n" << std::endl;
+    // std::cout << "audio sending - Action is the foundational key to all success.\n" << std::endl;
 }
 void AudioInterface::routeAudio(Audio audio) 
 {
@@ -402,15 +333,15 @@ struct DrumPads
 
 void DrumPads::triggerSampler() 
 {
-    std::cout << "triggerSamples - Every act of creation is first of all an act of destruction.\n" << std::endl;
+    // std::cout << "triggerSamples - Every act of creation is first of all an act of destruction.\n" << std::endl;
 }
 void DrumPads::muteTrack() 
 {
-    std::cout << "muteTrack" << std::endl;
+    // std::cout << "muteTrack" << std::endl;
 }
 void DrumPads::selectSample() 
 {
-    std::cout << "selectSample" << std::endl;
+    // std::cout << "selectSample" << std::endl;
 }
 
 //=========================================================
@@ -432,15 +363,15 @@ struct ParamDials
 
 void ParamDials::ctrlOneParam() 
 {
-    std::cout << "ctrlOneParam - It takes a long time to become young.\n" << std::endl;
+    // std::cout << "ctrlOneParam - It takes a long time to become young.\n" << std::endl;
 }
 void ParamDials::ctrlTwoParams() 
 {
-    std::cout << "ctrlTwoParams" << std::endl;
+    // std::cout << "ctrlTwoParams" << std::endl;
 }
 void ctrlTwoParamsDiffScalings() 
 {
-    std::cout << "ctrlTwoParamsDiffScalings" << std::endl;
+    // std::cout << "ctrlTwoParamsDiffScalings" << std::endl;
 }
 
 //=========================================================
@@ -462,15 +393,15 @@ struct MicrotonalPitcher
 
 void MicrotonalPitcher::pitchAnalysis() 
 {
-    std::cout << "pitchAnalysis" << std::endl;
+    // std::cout << "pitchAnalysis" << std::endl;
 }
 void MicrotonalPitcher::pitchShifting() 
 {
-    std::cout << "pitchShifting - Inspiration does exist, but it must find you working.\n" << std::endl;
+    //std::cout << "pitchShifting - Inspiration does exist, but it must find you working.\n" << std::endl;
 }
 void MicrotonalPitcher::formantFiltering() 
 {
-    std::cout << "formantFiltering" << std::endl;
+    //std::cout << "formantFiltering" << std::endl;
 }
 
 //=========================================================
@@ -506,7 +437,7 @@ void TimeWarpFlexThing::warpToEvenSpreadedSpectralEnergy(Pattern p)
 void TimeWarpFlexThing::cluster(Pattern p)
 {
     p.patternLen = 14;
-    std::cout << "cluster - Every child is an artist. The Problem is how to retain an artist once we grow up\n" << std::endl;
+    // std::cout << "cluster - Every child is an artist. The Problem is how to retain an artist once we grow up\n" << std::endl;
 }
 
 auto TimeWarpFlexThing::sliceSample(AudioInterface audioInterface)
@@ -534,7 +465,7 @@ struct InsaneMusicMachine
     
     void play()
     {
-        std::cout << "Good artists copy, great artists steal. - Picasso" << std::endl;
+       // std::cout << "Good artists copy, great artists steal. - Picasso" << std::endl;
     }
 
     void stop();
@@ -545,7 +476,7 @@ struct InsaneMusicMachine
 
 int main()
 {
-    Aquarium aquarium;
+    // Aquarium aquarium;
     Oven oven;
     Cat cat;
     Cup cup;
@@ -558,7 +489,6 @@ int main()
     InsaneMusicMachine iMM;
 
 
-    aquarium.inspireHumans();
     oven.heatUp();
     oven.foodReady();
     cat.jump();
@@ -577,29 +507,18 @@ int main()
     
     iMM.play();
 
+    /*
     std::cout << "\naquarium plant types: " << aquarium.plantTypes << std::endl;
     std::cout << "oven temperature: " << oven.temperatur << std::endl;
     std::cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << std::endl;
 
     // print returning values
     std::cout << "\n energy sucked: " << aquarium.suckEnergy() << "\n" << std::endl;
-
-
-    // part 5
-    // set waterconditionvalue
-    // checkwatercondition 
-    // filter water... till its clean.. 
-    
-    aquarium.setWaterConditionValue(50);
-    aquarium.setWaterConditionMeter();
-    aquarium.controlWaterCondition();
-    
-    
-    
-
+    */
 
     std::cout << " " << std::endl;
     Example::main();
+    Part5::main();
     std::cout << "good to go!" << std::endl;
 }
 
