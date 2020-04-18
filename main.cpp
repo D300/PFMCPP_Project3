@@ -144,7 +144,7 @@ struct Oven
     clean(true),
     temperatur(234.f)
     {
-        // std::cout << "oven ctor" << std::endl;
+        std::cout << "oven ctor" << std::endl;
     } 
     
     int heatingStyle = 3;
@@ -166,12 +166,12 @@ bool Oven::checkCondition()
 
     if (clean == true)
     {
-        // std::cout << "heated Up - lets make some cookies" << std::endl;
+        std::cout << "heated Up - lets make some cookies" << std::endl;
         condition = true;
     }
     else
     {
-        // std::cout << "clean your oven" << std::endl;
+        std::cout << "clean your oven" << std::endl;
     }
 
     return condition;
@@ -197,12 +197,12 @@ void Oven::setTemperature(bool condition)
 
 void Oven::startTimer() 
 {
-    // std::cout << "startTimer" << std::endl;
+    std::cout << "startTimer" << std::endl;
 }
 
 void Oven::foodReady() 
 {
-    // std::cout << "foodReady - Everything you can imagine is real.\n" << std::endl;
+    std::cout << "foodReady - Everything you can imagine is real.\n" << std::endl;
 }
 
 //=========================================================
@@ -225,15 +225,15 @@ struct Cat
 
 void Cat::jump() 
 {
-    // std::cout << "jump - Art washes away from the soul the dust of everyday life.\n" << std::endl;
+    std::cout << "jump - Art washes away from the soul the dust of everyday life.\n" << std::endl;
 }
 void Cat::chill() 
 {
-    // std::cout << "chill" << std::endl;
+    std::cout << "chill" << std::endl;
 }
 void Cat::purrrr() 
 {
-    // std::cout << "purrrr" << std::endl;
+    std::cout << "purrrr" << std::endl;
 }
 
 //=========================================================
@@ -256,15 +256,15 @@ struct Cup
 
 void Cup::stand() 
 {
-    // std::cout << "stand" << std::endl;
+    std::cout << "stand" << std::endl;
 }
 void Cup::breakCup() 
 {
-    // std::cout << "breakCup" << std::endl;
+    std::cout << "breakCup" << std::endl;
 }
 void Cup::fallFromTable() 
 {
-    // std::cout << "fallFromTable - Art is a lie that makes us realize truth.\n" << std::endl;
+    std::cout << "fallFromTable - Art is a lie that makes us realize truth.\n" << std::endl;
 }
 
 //=========================================================
@@ -303,7 +303,7 @@ struct AudioInterface
 void AudioInterface::sendAudio(Audio audio) 
 {
     audio.streamAudio(512);
-    // std::cout << "audio sending - Action is the foundational key to all success.\n" << std::endl;
+    std::cout << "audio sending - Action is the foundational key to all success.\n" << std::endl;
 }
 void AudioInterface::routeAudio(Audio audio) 
 {
@@ -333,15 +333,15 @@ struct DrumPads
 
 void DrumPads::triggerSampler() 
 {
-    // std::cout << "triggerSamples - Every act of creation is first of all an act of destruction.\n" << std::endl;
+    std::cout << "triggerSamples - Every act of creation is first of all an act of destruction.\n" << std::endl;
 }
 void DrumPads::muteTrack() 
 {
-    // std::cout << "muteTrack" << std::endl;
+    std::cout << "muteTrack" << std::endl;
 }
 void DrumPads::selectSample() 
 {
-    // std::cout << "selectSample" << std::endl;
+    std::cout << "selectSample" << std::endl;
 }
 
 //=========================================================
@@ -363,15 +363,15 @@ struct ParamDials
 
 void ParamDials::ctrlOneParam() 
 {
-    // std::cout << "ctrlOneParam - It takes a long time to become young.\n" << std::endl;
+    std::cout << "ctrlOneParam - It takes a long time to become young.\n" << std::endl;
 }
 void ParamDials::ctrlTwoParams() 
 {
-    // std::cout << "ctrlTwoParams" << std::endl;
+    std::cout << "ctrlTwoParams" << std::endl;
 }
 void ctrlTwoParamsDiffScalings() 
 {
-    // std::cout << "ctrlTwoParamsDiffScalings" << std::endl;
+    std::cout << "ctrlTwoParamsDiffScalings" << std::endl;
 }
 
 //=========================================================
@@ -393,15 +393,15 @@ struct MicrotonalPitcher
 
 void MicrotonalPitcher::pitchAnalysis() 
 {
-    // std::cout << "pitchAnalysis" << std::endl;
+    std::cout << "pitchAnalysis" << std::endl;
 }
 void MicrotonalPitcher::pitchShifting() 
 {
-    //std::cout << "pitchShifting - Inspiration does exist, but it must find you working.\n" << std::endl;
+    std::cout << "pitchShifting - Inspiration does exist, but it must find you working.\n" << std::endl;
 }
 void MicrotonalPitcher::formantFiltering() 
 {
-    //std::cout << "formantFiltering" << std::endl;
+    std::cout << "formantFiltering" << std::endl;
 }
 
 //=========================================================
@@ -437,7 +437,7 @@ void TimeWarpFlexThing::warpToEvenSpreadedSpectralEnergy(Pattern p)
 void TimeWarpFlexThing::cluster(Pattern p)
 {
     p.patternLen = 14;
-    // std::cout << "cluster - Every child is an artist. The Problem is how to retain an artist once we grow up\n" << std::endl;
+    std::cout << "cluster - Every child is an artist. The Problem is how to retain an artist once we grow up\n" << std::endl;
 }
 
 auto TimeWarpFlexThing::sliceSample(AudioInterface audioInterface)
@@ -465,7 +465,7 @@ struct InsaneMusicMachine
     
     void play()
     {
-       // std::cout << "Good artists copy, great artists steal. - Picasso" << std::endl;
+       std::cout << "Good artists copy, great artists steal. - Picasso" << std::endl;
     }
 
     void stop();
@@ -476,7 +476,7 @@ struct InsaneMusicMachine
 
 int main()
 {
-    // Aquarium aquarium;
+    Part5::Aquarium aquarium;
     Oven oven;
     Cat cat;
     Cup cup;
@@ -507,14 +507,9 @@ int main()
     
     iMM.play();
 
-    /*
-    std::cout << "\naquarium plant types: " << aquarium.plantTypes << std::endl;
+    
     std::cout << "oven temperature: " << oven.temperatur << std::endl;
-    std::cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << std::endl;
-
-    // print returning values
-    std::cout << "\n energy sucked: " << aquarium.suckEnergy() << "\n" << std::endl;
-    */
+    std::cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << std::endl; 
 
     std::cout << " " << std::endl;
     Example::main();
