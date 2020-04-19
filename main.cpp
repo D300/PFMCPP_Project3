@@ -51,7 +51,7 @@ struct Foo
         while( bar.num < threshold )         //4a) 
         { 
             bar.num += 1;                    //4a)
-            
+
             if( bar.num >= threshold )       //4b)
                 return bar;
         }
@@ -68,53 +68,72 @@ int main()
     std::cout << "bar.num: " << bar.num << std::endl;     //6) 
     return 0;
 }
-}
+} // end namespace
 
-//call Example::main() in main()
+// Example::main() in main()
 
 
+namespace Part5 {
+/*
+struct Filter
+{
+    int filterLifetime = 100;
+    Filter(int l) : filterLifetime(l) { }
+};
+*/
+
+struct Water
+{
+    float clarity = -50.f;
+    Water(float c) : clarity(c) { }
+
+    float getCondition()
+    {
+        return clarity;
+    }
+};
 
 struct Aquarium
 {
-    // do you put the member variables which you instatiate in the constructor above the ctor for readability?
-    
     float size;
-    float glassThickness;
-    int waterFilters { 3 };
 
     Aquarium() :
-    size(39),
-    glassThickness(5)
+    size(39)
     {
-        std::cout << "aquarium ctor" << std::endl;
+        std::cout << "aquarium ctor\n" << std::endl;
     }
 
-    int plantTypes = 3;
-    bool light = true;
-    
-    void accomodateFishes();
-    void inspireHumans();
-    int suckEnergy();
+    Water filterWaterUntilItsClean(Water water);
+
 };
 
-void Aquarium::accomodateFishes() 
+Water Aquarium::filterWaterUntilItsClean(Water water)
 {
-    std::cout << "accommodateFishes" << std::endl;
-}
-
-void Aquarium::inspireHumans() 
-{
-    auto sizeOverWaterFilter = size / waterFilters;
+    while (water.getCondition() < 0) // a)
+    {
+        water.clarity += 5;
+        std::cout << "...filters water..." << std::endl;
+    }
     
-    std::cout << "sizeOverWaterFilters: " << sizeOverWaterFilter << "\n" << std::endl;
+    return water;
 }
 
-int Aquarium::suckEnergy()
+int main()
 {
-    return 100;
+    Aquarium aquarium;
+    Water water(-50);
+    
+    auto filteredWater = aquarium.filterWaterUntilItsClean(water);
+
+    std::cout << "\nwater is clean with a clarity of " << filteredWater.clarity << "\n" << std::endl;
+
+    return 0;
 }
 
-//=========================================================
+} // end namespace
+
+//==================================================================
+//==================================================================
 
 struct Oven
 {
@@ -446,7 +465,7 @@ struct InsaneMusicMachine
     
     void play()
     {
-        std::cout << "Good artists copy, great artists steal. - Picasso" << std::endl;
+       std::cout << "Good artists copy, great artists steal. - Picasso" << std::endl;
     }
 
     void stop();
@@ -457,7 +476,7 @@ struct InsaneMusicMachine
 
 int main()
 {
-    Aquarium aquarium;
+    Part5::Aquarium aquarium;
     Oven oven;
     Cat cat;
     Cup cup;
@@ -470,7 +489,6 @@ int main()
     InsaneMusicMachine iMM;
 
 
-    aquarium.inspireHumans();
     oven.heatUp();
     oven.foodReady();
     cat.jump();
@@ -489,16 +507,13 @@ int main()
     
     iMM.play();
 
-    std::cout << "\naquarium plant types: " << aquarium.plantTypes << std::endl;
+    
     std::cout << "oven temperature: " << oven.temperatur << std::endl;
-    std::cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << std::endl;
+    std::cout << "current warp points amount: " << timeWarper.maxWarpPoints << "\n" << std::endl; 
 
-
-    // print returning values
-    std::cout << "\n energy sucked: " << aquarium.suckEnergy() << std::endl;
-
-
+    std::cout << " " << std::endl;
     Example::main();
+    Part5::main();
     std::cout << "good to go!" << std::endl;
 }
 
